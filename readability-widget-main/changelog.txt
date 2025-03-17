@@ -1,0 +1,2 @@
+Release 1.2.1
+* change blue for "on" toggle to be lighter to comply with contrast
