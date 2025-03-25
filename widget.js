@@ -7,8 +7,8 @@ var ra_widget = {
 	init: function(){
 		ra_widget._paq = window._paq || [];
 		
-		fetch('https://cdn.lib.ncsu.edu/readability-widget/widget.html').then(function (response) {
-		// fetch('http://local.lib.ncsu.edu/dev/readability-widget/widget.html').then(function (response) {
+		// fetch('https://cdn.lib.ncsu.edu/readability-widget/widget.html').then(function (response) {
+		fetch('widget.html').then(function (response) {
 			// successful API call
 			return response.text();
 		}).then(function (html) {

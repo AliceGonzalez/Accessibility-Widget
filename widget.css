@@ -112,7 +112,7 @@ body.readability-highlight-links-on button:hover {
   right: 0px;
 }
 #readability-widget.widget-hidden #widget-toggle button:hover {
-  background-color: #CC0000;
+  background-color: #004A78;
   position: relative;
   right: 150px;
 }
@@ -120,7 +120,7 @@ body.readability-highlight-links-on button:hover {
   text-align: right;
 }
 #readability-widget #widget-toggle button {
-  background: #cc0000;
+  background: #004A78;
   border: 0px;
   color: #FFF;
   font-family: "RobotoBold", Arial, Helvetica Neue, Helvetica, sans-serif;
@@ -130,14 +130,14 @@ body.readability-highlight-links-on button:hover {
   position: relative;
 }
 #readability-widget #widget-toggle button:focus {
-  outline: 3px solid blue;
+  outline: 3px solid #e9a714;
 }
 #readability-widget #widget-toggle button:hover {
   cursor: pointer;
 }
 #readability-widget #widget-content {
   background: #ffffff;
-  border: 1px solid #555;
+  border: 1px solid #004A78;
   font-family: "RobotoLight", Arial, Helvetica Neue, Helvetica, sans-serif;
   font-size: 1.25rem;
   font-weight: 100;
@@ -148,7 +148,7 @@ body.readability-highlight-links-on button:hover {
 #readability-widget #widget-content #hide-widget-button {
   background: none;
   border: none;
-  color: #757575;
+  color: #004A78;
   font-family: "RobotoLight", Arial, Helvetica Neue, Helvetica, sans-serif;
   font-weight: 100;
   font-size: 0.9rem;
@@ -186,7 +186,7 @@ body.readability-highlight-links-on button:hover {
   height: 0;
 }
 #readability-widget #widget-content label.readability-switch input:focus + span.toggle-switch {
-  outline: 3px solid blue;
+  outline: 3px solid #004A78;
 }
 #readability-widget #widget-content label.readability-switch span.toggle-switch {
   background-color: #ccc;
@@ -235,7 +235,7 @@ body.readability-highlight-links-on button:hover {
   width: 24px;
 }
 #readability-widget #widget-content label.readability-switch input:checked + .toggle-switch {
-  background-color: #94ccf9;
+  background-color: #f9db89;
 }
 #readability-widget #widget-content label.readability-switch input:checked + .toggle-switch .label-off {
   display: none;
@@ -256,7 +256,7 @@ body.readability-highlight-links-on button:hover {
   margin: 0px 0px 10px 0px;
 }
 #readability-widget #widget-content p a {
-  color: #cc0000;
+  color: #004A78;
   text-decoration: none;
 }
 #readability-widget #widget-content p a:hover {
