@@ -6,7 +6,7 @@ var ra_widget = {
         // Dynamically load the widget's CSS
         const link = document.createElement('link');
         link.rel = 'stylesheet';
-        link.href = 'https://your-server.com/widget.css'; // Replace with the actual URL of your CSS file
+        link.href = 'https://alicegonzalez.github.io/Accessibility-Widget/widget.css'; // Replace with the actual URL of your CSS file
         document.head.appendChild(link);
 
         // Dynamically inject the widget's HTML
@@ -86,16 +86,240 @@ var ra_widget = {
         });
     },
 
-    // Other widget functions remain unchanged...
+    show_widget_to_users: function() {
+        // bug where widget content padding was not computed right away. wait for padding to be computed before showing widget
+        const padding_check = setInterval(function() {
+            widget_content = document.getElementById("widget-content");
+            widget_content_padding = window.getComputedStyle(widget_content, null).getPropertyValue('padding-left');
+            if (widget_content_padding != '0px') {
+                clearInterval(padding_check);
+                ra_widget.close_widget();
+                // show widget
+                document.getElementById('readability-widget').style.opacity = 1;
+            }
+        }, 100);
+    },
+
+    toggle_widget: function(e) {
+        // add event listener to widget button (toggle on|off)
+        document.querySelector("#widget-toggle-button").addEventListener("click", function(e) {
+            widget_element = document.getElementById('readability-widget');
+            if (widget_element.classList.contains('closed')) {
+                ra_widget.reveal_widget();
+            } else {
+                ra_widget.close_widget();
+            }
+        });
+    },
+
+    reveal_widget: function() {
+        widget_element = document.getElementById('readability-widget');
+        widget_element.classList.remove('closed');
+        widget_element.classList.remove('widget-hidden');
+        widget_element.classList.add('open');
+        // set bottom of article to 0px
+        widget_element.style.bottom = "0px";
+
+        ra_widget.set_widget_hidden_local_storage('false');
+
+        ra_widget.enable_internal_tabbing();
+
+        // add analytics
+        ra_widget._paq.push(['trackEvent', 'Readability Widget', 'widget toggle', 'open']);
+    },
+
+    close_widget: function() {
+        widget_element = document.getElementById('readability-widget');
+        widget_element.classList.remove('open');
+        widget_element.classList.add('closed');
+
+        // set bottom of article to - height of the widget content
+        widget_content = document.getElementById("widget-content");
+
+        widget_element.style.bottom = -(widget_content.offsetHeight) + "px";
+
+        ra_widget.disable_internal_tabbing();
+    },
+
+    disable_internal_tabbing: function() {
+        all_internal_links = document.querySelectorAll('#widget-content a, #widget-content input, #widget-content button');
+
+        all_internal_links.forEach(function(currentValue) {
+            currentValue.tabIndex = -1;
+        });
+    },
+
+    enable_internal_tabbing: function() {
+        all_internal_links = document.querySelectorAll('#widget-content a, #widget-content input, #widget-content button');
+
+        all_internal_links.forEach(function(currentValue) {
+            currentValue.tabIndex = 0;
+        });
+    },
+
+    close_on_click_outside_of_widget: function() {
+        widget_element = document.getElementById('readability-widget');
+        const outside_click_listener = event => {
+            if (!widget_element.contains(event.target) && !widget_element.classList.contains('closed')) {
+                ra_widget.close_widget();
+            }
+        }
+        // add event listener to body
+        document.addEventListener('click', outside_click_listener);
+    },
+
+    close_on_escape: function() {
+        const escape_key_listener = event => {
+            if (event.keyCode == 27) {
+                ra_widget.close_widget();
+            }
+        }
+        document.addEventListener("keydown", escape_key_listener);
+    },
+
+    set_hidden_event_listener: function() {
+        document.getElementById("hide-widget-button").addEventListener('click', function(e) {
+            ra_widget.hide_widget();
+        })
+    },
+
+    hide_widget: function() {
+        ra_widget.close_widget();
+        // and hide it too
+        widget_element = document.getElementById('readability-widget');
+        widget_element.classList.add("widget-hidden");
+
+        // set widget localStorage 
+        ra_widget.set_widget_hidden_local_storage('true');
+
+        // add analytics
+        ra_widget._paq.push(['trackEvent', 'Readability Widget', 'widget toggle', 'hidden']);
+    },
+
+    check_localstorage_toggles: function() {
+        // check if we should hide widget
+        if (localStorage.widget_hidden == 'true') {
+            ra_widget.hide_widget();
+        }
+
+        // check for warm background
+        if (localStorage.warm_background == 'true') {
+            const warm_overlay_el = document.createElement('div');
+            warm_overlay_el.id = "readability-warm-overlay";
+            document.body.appendChild(warm_overlay_el);
+            document.getElementById("warm-background-toggle").checked = true;
+        }
+
+        // check for images
+        if (localStorage.hide_all_images == 'true') {
+            ra_widget.hide_show_all_images('true');
+            document.getElementById("hide-images-toggle").checked = true;
+        }
+
+        // check for dyslexic font storage
+        if (localStorage.open_dyslexic_font == 'true') {
+            document.body.classList.add("open-dyslexic");
+            document.getElementById("open-dyslexic-font-toggle").checked = true;
+        }
+
+        // check for highlight links storage
+        if (localStorage.highlight_links == 'true') {
+            ra_widget.hide_show_highlighted_links('true');
+            document.getElementById("highlight-links-toggle").checked = true;
+        }
+    },
+
+    set_widget_hidden_local_storage: function(value) {
+        localStorage.widget_hidden = value;
+    },
+
+    add_listeners_to_toggles: function() {
+        document.getElementById("warm-background-toggle").addEventListener('click', function(e) {
+            if (e.target.checked) {
+                const warm_overlay_el = document.createElement('div');
+                warm_overlay_el.id = "readability-warm-overlay";
+                document.body.appendChild(warm_overlay_el);
+                localStorage.warm_background = 'true';
+
+                // add analytics
+                ra_widget._paq.push(['trackEvent', 'Readability Widget', 'warm background', 'on']);
+            } else {
+                document.getElementById("readability-warm-overlay").remove();
+                localStorage.warm_background = 'false';
+
+                // add analytics
+                ra_widget._paq.push(['trackEvent', 'Readability Widget', 'warm background', 'off']);
+            }
+        });
+
+        document.getElementById("hide-images-toggle").addEventListener('click', function(e) {
+            if (e.target.checked) {
+                ra_widget.hide_show_all_images('true');
+            } else {
+                ra_widget.hide_show_all_images('false');
+            }
+        });
+
+        document.getElementById("open-dyslexic-font-toggle").addEventListener('click', function(e) {
+            if (e.target.checked) {
+                document.body.classList.add("open-dyslexic");
+                localStorage.open_dyslexic_font = 'true';
+
+                // add analytics
+                ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight dyslexic font', 'on']);
+            } else {
+                document.body.classList.remove("open-dyslexic");
+                localStorage.open_dyslexic_font = 'false';
+
+                // add analytics
+                ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight dyslexic font', 'off']);
+            }
+        });
+
+        document.getElementById("highlight-links-toggle").addEventListener('click', function(e) {
+            if (e.target.checked) {
+                ra_widget.hide_show_highlighted_links('true');
+                ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'on']);
+            } else {
+                ra_widget.hide_show_highlighted_links('false');
+                ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'off']);
+            }
+        });
+    },
+
+    hide_show_all_images: function(value) {
+        if (value == 'true') {
+            document.body.classList.add('readability-hide-images');
+            ra_widget._paq.push(['trackEvent', 'Readability Widget', 'hide images', 'on']);
+        } else {
+            document.body.classList.remove('readability-hide-images');
+            ra_widget._paq.push(['trackEvent', 'Readability Widget', 'hide images', 'off']);
+        }
+        localStorage.hide_all_images = value;
+    },
+
+    hide_show_highlighted_links: function(value) {
+        if (value == 'true') {
+            document.body.classList.add('readability-highlight-links-on');
+            ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'on']);
+        } else {
+            document.body.classList.remove('readability-highlight-links-on');
+            ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'off']);
+        }
+        localStorage.highlight_links = value;
+    },
+
+    add_link_analytics: function() {
+        document.getElementById('widget-feedback-link').addEventListener('click', function(e) {
+            ra_widget._paq.push(['trackEvent', 'Readability Widget', 'widget feedback link click']);
+        });
+    }
 };
 
 // once DOM is fully loaded, initialize widget
 window.addEventListener('DOMContentLoaded', function(e) {
     ra_widget.init();
 });
-
-
-
 
 
 
