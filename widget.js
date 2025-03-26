@@ -57,31 +57,34 @@ var ra_widget = {
             .then(function(html) {
                 document.body.insertAdjacentHTML("beforeend", html);
 
-                // once widget has loaded enable event listener on button
-                ra_widget.toggle_widget();
+                // Ensure DOM is updated before attaching event listeners
+                setTimeout(function() {
+                    // once widget has loaded enable event listener on button
+                    ra_widget.toggle_widget();
 
-                // enable event listeners on toggles
-                ra_widget.add_listeners_to_toggles();
+                    // enable event listeners on toggles
+                    ra_widget.add_listeners_to_toggles();
 
-                // close when clicking outside widget area
-                ra_widget.close_on_click_outside_of_widget();
+                    // close when clicking outside widget area
+                    ra_widget.close_on_click_outside_of_widget();
 
-                // close when esc key pressed
-                ra_widget.close_on_escape();
+                    // close when esc key pressed
+                    ra_widget.close_on_escape();
 
-                // hide widget when hide button pressed
-                ra_widget.set_hidden_event_listener();
+                    // hide widget when hide button pressed
+                    ra_widget.set_hidden_event_listener();
 
-                // check localstorage toggles
-                ra_widget.check_localstorage_toggles();
+                    // check localstorage toggles
+                    ra_widget.check_localstorage_toggles();
 
-                // add analytics to html links
-                ra_widget.add_link_analytics();
+                    // add analytics to html links
+                    ra_widget.add_link_analytics();
 
-                // finally show widget to users
-                ra_widget.show_widget_to_users();
-
-            }).catch(function(err) {
+                    // finally show widget to users
+                    ra_widget.show_widget_to_users();
+                }, 0); // Delay to ensure DOM is updated
+            })
+            .catch(function(err) {
                 console.error("Failed to load widget.html:", err);
             });
     },
@@ -234,57 +237,71 @@ var ra_widget = {
     },
 
     add_listeners_to_toggles: function() {
-        document.getElementById("warm-background-toggle").addEventListener('click', function(e) {
-            if (e.target.checked) {
-                const warm_overlay_el = document.createElement('div');
-                warm_overlay_el.id = "readability-warm-overlay";
-                document.body.appendChild(warm_overlay_el);
-                localStorage.warm_background = 'true';
+        // Ensure elements exist before attaching event listeners
+        const warmBackgroundToggle = document.getElementById("warm-background-toggle");
+        const hideImagesToggle = document.getElementById("hide-images-toggle");
+        const openDyslexicFontToggle = document.getElementById("open-dyslexic-font-toggle");
+        const highlightLinksToggle = document.getElementById("highlight-links-toggle");
 
-                // add analytics
-                ra_widget._paq.push(['trackEvent', 'Readability Widget', 'warm background', 'on']);
-            } else {
-                document.getElementById("readability-warm-overlay").remove();
-                localStorage.warm_background = 'false';
+        if (warmBackgroundToggle) {
+            warmBackgroundToggle.addEventListener('click', function(e) {
+                if (e.target.checked) {
+                    const warm_overlay_el = document.createElement('div');
+                    warm_overlay_el.id = "readability-warm-overlay";
+                    document.body.appendChild(warm_overlay_el);
+                    localStorage.warm_background = 'true';
 
-                // add analytics
-                ra_widget._paq.push(['trackEvent', 'Readability Widget', 'warm background', 'off']);
-            }
-        });
+                    // add analytics
+                    ra_widget._paq.push(['trackEvent', 'Readability Widget', 'warm background', 'on']);
+                } else {
+                    document.getElementById("readability-warm-overlay").remove();
+                    localStorage.warm_background = 'false';
 
-        document.getElementById("hide-images-toggle").addEventListener('click', function(e) {
-            if (e.target.checked) {
-                ra_widget.hide_show_all_images('true');
-            } else {
-                ra_widget.hide_show_all_images('false');
-            }
-        });
+                    // add analytics
+                    ra_widget._paq.push(['trackEvent', 'Readability Widget', 'warm background', 'off']);
+                }
+            });
+        }
 
-        document.getElementById("open-dyslexic-font-toggle").addEventListener('click', function(e) {
-            if (e.target.checked) {
-                document.body.classList.add("open-dyslexic");
-                localStorage.open_dyslexic_font = 'true';
+        if (hideImagesToggle) {
+            hideImagesToggle.addEventListener('click', function(e) {
+                if (e.target.checked) {
+                    ra_widget.hide_show_all_images('true');
+                } else {
+                    ra_widget.hide_show_all_images('false');
+                }
+            });
+        }
 
-                // add analytics
-                ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight dyslexic font', 'on']);
-            } else {
-                document.body.classList.remove("open-dyslexic");
-                localStorage.open_dyslexic_font = 'false';
+        if (openDyslexicFontToggle) {
+            openDyslexicFontToggle.addEventListener('click', function(e) {
+                if (e.target.checked) {
+                    document.body.classList.add("open-dyslexic");
+                    localStorage.open_dyslexic_font = 'true';
 
-                // add analytics
-                ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight dyslexic font', 'off']);
-            }
-        });
+                    // add analytics
+                    ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight dyslexic font', 'on']);
+                } else {
+                    document.body.classList.remove("open-dyslexic");
+                    localStorage.open_dyslexic_font = 'false';
 
-        document.getElementById("highlight-links-toggle").addEventListener('click', function(e) {
-            if (e.target.checked) {
-                ra_widget.hide_show_highlighted_links('true');
-                ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'on']);
-            } else {
-                ra_widget.hide_show_highlighted_links('false');
-                ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'off']);
-            }
-        });
+                    // add analytics
+                    ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight dyslexic font', 'off']);
+                }
+            });
+        }
+
+        if (highlightLinksToggle) {
+            highlightLinksToggle.addEventListener('click', function(e) {
+                if (e.target.checked) {
+                    ra_widget.hide_show_highlighted_links('true');
+                    ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'on']);
+                } else {
+                    ra_widget.hide_show_highlighted_links('false');
+                    ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'off']);
+                }
+            });
+        }
     },
 
     hide_show_all_images: function(value) {
