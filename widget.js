@@ -6,7 +6,7 @@ var ra_widget = {
         // Dynamically load the widget's CSS
         const link = document.createElement('link');
         link.rel = 'stylesheet';
-        link.href = 'https://alicegonzalez.github.io/Accessibility-Widget/widget.css'; // Replace with the actual URL of your CSS file
+        link.href = './widget.css'; // Ensure this path is correct
         document.head.appendChild(link);
 
         // Dynamically inject the widget's HTML
@@ -47,43 +47,43 @@ var ra_widget = {
 
         // Fetch and initialize the widget
         ra_widget._paq = window._paq || [];
-        fetch('widget.html').then(function(response) {
-            // successful API call
-            return response.text();
-        }).then(function(html) {
-            // HTML from response as text string
-            // append to the end of the body element
-            var b = document.body;
-            b.insertAdjacentHTML("beforeend", html);
+        fetch('./widget.html') // Ensure this path is correct
+            .then(function(response) {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(function(html) {
+                document.body.insertAdjacentHTML("beforeend", html);
 
-            // once widget has loaded enable event listener on button
-            ra_widget.toggle_widget();
+                // once widget has loaded enable event listener on button
+                ra_widget.toggle_widget();
 
-            // enable event listeners on toggles
-            ra_widget.add_listeners_to_toggles();
+                // enable event listeners on toggles
+                ra_widget.add_listeners_to_toggles();
 
-            // close when clicking outside widget area
-            ra_widget.close_on_click_outside_of_widget();
+                // close when clicking outside widget area
+                ra_widget.close_on_click_outside_of_widget();
 
-            // close when esc key pressed
-            ra_widget.close_on_escape();
+                // close when esc key pressed
+                ra_widget.close_on_escape();
 
-            // hide widget when hide button pressed
-            ra_widget.set_hidden_event_listener();
+                // hide widget when hide button pressed
+                ra_widget.set_hidden_event_listener();
 
-            // check localstorage toggles
-            ra_widget.check_localstorage_toggles();
+                // check localstorage toggles
+                ra_widget.check_localstorage_toggles();
 
-            // add analytics to html links
-            ra_widget.add_link_analytics();
+                // add analytics to html links
+                ra_widget.add_link_analytics();
 
-            // finally show widget to users
-            ra_widget.show_widget_to_users();
+                // finally show widget to users
+                ra_widget.show_widget_to_users();
 
-        }).catch(function(err) {
-            // something went wrong
-            console.warn("Failed to load widget.html", err);
-        });
+            }).catch(function(err) {
+                console.error("Failed to load widget.html:", err);
+            });
     },
 
     show_widget_to_users: function() {
@@ -320,10 +320,6 @@ var ra_widget = {
 window.addEventListener('DOMContentLoaded', function(e) {
     ra_widget.init();
 });
-
-
-
-
 
 
 
