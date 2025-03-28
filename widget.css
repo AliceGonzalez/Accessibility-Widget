@@ -274,4 +274,11 @@ body.readability-hide-images div.slick-wrapper {
   }
 }
 
-/*# sourceMappingURL=widget.css.map */
+#readability-widget {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px 8px 0 0;

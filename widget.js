@@ -47,7 +47,7 @@ var ra_widget = {
 
         // Fetch and initialize the widget
         ra_widget._paq = window._paq || [];
-        fetch('./widget.html') // Ensure this path is correct
+        fetch('https://alicegonzalez.github.io/Accessibility-Widget/widget.html') // Ensure this path is correct
             .then(function(response) {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
