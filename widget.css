@@ -283,3 +283,9 @@ body.readability-hide-images div.slick-wrapper {
   border: 1px solid #ccc;
   border-radius: 8px 8px 0 0;
 }
+
+.readability-highlight-links-on a {
+  background-color: yellow; /* Highlight links with a yellow background */
+  color: blue; /* Change link text color to blue */
+  text-decoration: underline; /* Optional: underline links */
+}
