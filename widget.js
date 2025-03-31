@@ -2,14 +2,14 @@ var ra_widget = {
 	// load widget to page
 	init: function(){
 
-		// fetch('https://alicegonzalez.github.io/Accessibility-Widget/widget.html').then(function (response) {
-		// 	// successful API call
-		// 	return response.text();
-		// }).then(function (html) {
-		// 	// HTML from response as text string
-		// 	// append to the end of the body element
-		// 	var b = document.body;
-		// 	b.insertAdjacentHTML("beforeend",html);
+		fetch('https://alicegonzalez.github.io/Accessibility-Widget/widget.html').then(function (response) {
+			// successful API call
+			return response.text();
+		}).then(function (html) {
+			// HTML from response as text string
+			// append to the end of the body element
+			var b = document.body;
+			b.insertAdjacentHTML("beforeend",html);
 
 			// once widget has loaded enable event listener on button
 			ra_widget.toggle_widget();
