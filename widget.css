@@ -107,7 +107,7 @@ body.readability-highlight-links-on button:hover {
   right: -148px;
 }
 #readability-widget.widget-hidden #widget-toggle button {
-  background-color: #757575;
+  background-color: #e70bb0; /* TESTING Original: #757575 */
   transition: right 0.25s;
   right: 0px;
 }
