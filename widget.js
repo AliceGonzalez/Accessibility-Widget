@@ -2,7 +2,7 @@ var ra_widget = {
 	// load widget to page
 	init: function(){
 
-		fetch('./widget.html').then(function (response) {
+		fetch('https://alicegonzalez.github.io/Accessibility-Widget/widget.html').then(function (response) {
 			// successful API call
 			return response.text();
 		}).then(function (html) {
