@@ -2,7 +2,7 @@ var ra_widget = {
 	// load widget to page
 	init: function(){
 
-		fetch('https://alicegonzalez.github.io/Accessibility-Widget/widget.html').then(function (response) {
+		fetch('/widget.html').then(function (response) {
 			// successful API call
 			return response.text();
 		}).then(function (html) {
@@ -33,7 +33,7 @@ var ra_widget = {
 			ra_widget.check_for_analytics();
 
 			// add analytics to html links
-			// ra_widget.add_link_analytics();
+			ra_widget.add_link_analytics();
 
 			// finally show widget to users
 			ra_widget.show_widget_to_users();
@@ -352,12 +352,12 @@ var ra_widget = {
 	},
 	// add analytics to text links
 	add_link_analytics : function(){
-		// document.getElementById('widget-feedback-link').addEventListener('click', function(e){
-		// 	// add analytics
-		// 	if(ra_widget.analytics_exists){
-		// 		ga('send', 'event', 'Readability Widget', 'widget feedback link click');
-		// 	}
-		// })
+		document.getElementById('widget-feedback-link').addEventListener('click', function(e){
+			// add analytics
+			if(ra_widget.analytics_exists){
+				ga('send', 'event', 'Readability Widget', 'widget feedback link click');
+			}
+		})
 	}
 }
 
