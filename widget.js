@@ -1,16 +1,49 @@
 var ra_widget = {
 	// load widget to page
 	init: function(){
-		// directly initialize widget functionality
-		ra_widget.toggle_widget();
-		ra_widget.add_listeners_to_toggles();
-		ra_widget.close_on_click_outside_of_widget();
-		ra_widget.close_on_escape();
-		ra_widget.set_hidden_event_listener();
-		ra_widget.check_localstorage_toggles();
-		ra_widget.check_for_analytics();
-		ra_widget.add_link_analytics();
-		ra_widget.show_widget_to_users();
+
+		fetch('/widget.html').then(function (response) {
+			// successful API call
+			return response.text();
+		}).then(function (html) {
+			// HTML from response as text string
+			// append to the end of the body element
+			var b = document.body;
+			b.insertAdjacentHTML("beforeend",html);
+
+			// once widget has loaded enable event listener on button
+			ra_widget.toggle_widget();
+
+			// enable event listeners on toggles
+			ra_widget.add_listeners_to_toggles();
+
+			// close when clicking outside widget area
+			ra_widget.close_on_click_outside_of_widget();
+
+			// close when esc key pressed
+			ra_widget.close_on_escape();
+
+			// hide widget when hide button pressed
+			ra_widget.set_hidden_event_listener();
+
+			// check localstorage toggles
+			ra_widget.check_localstorage_toggles();
+
+			// check if analytics exists, if so set global var
+			ra_widget.check_for_analytics();
+
+			// add analytics to html links
+			ra_widget.add_link_analytics();
+
+			// finally show widget to users
+			ra_widget.show_widget_to_users();
+
+		});
+		// .catch(function (err) {
+		// 	// something went wrong
+		// 	console.warn("Failed to load widget.html", err);
+		// });
+
 	},
 
 	show_widget_to_users : function(){
