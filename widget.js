@@ -32,8 +32,8 @@ var ra_widget = {
 			// check if analytics exists, if so set global var
 			ra_widget.check_for_analytics();
 
-			// add analytics to html links
-			ra_widget.add_link_analytics();
+			// // add analytics to html links
+			// ra_widget.add_link_analytics();
 
 			// finally show widget to users
 			ra_widget.show_widget_to_users();
@@ -350,16 +350,16 @@ var ra_widget = {
 			// 	ra_widget.analytics_exists = true;
 			// }
 		}
-	},
-	// add analytics to text links
-	add_link_analytics : function(){
-		document.getElementById('widget-feedback-link').addEventListener('click', function(e){
-			// add analytics
-			if(ra_widget.analytics_exists){
-				ga('send', 'event', 'Readability Widget', 'widget feedback link click');
-			}
-		})
 	}
+	// add analytics to text links
+	// add_link_analytics : function(){
+	// 	document.getElementById('widget-feedback-link').addEventListener('click', function(e){
+	// 		// add analytics
+	// 		if(ra_widget.analytics_exists){
+	// 			ga('send', 'event', 'Readability Widget', 'widget feedback link click');
+	// 		}
+	// 	})
+	// }
 }
 
 // once DOM is fully loaded, initialize widget
