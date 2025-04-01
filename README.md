@@ -32,4 +32,4 @@ The widget will appear at the bottom right of your site. To expand the widget, t
 
 ## Credits
 
-This widget was originally created by Erik Olson, Meredith Wynn, and Robin Davis of the User Experience department at NC State University Libraries in 2021. It has been adapted and customized for GBC Ligrary Site by Alice Gonzalez, including theme color modifications and integration into the website.
+This widget was originally created by Erik Olson, Meredith Wynn, and Robin Davis of the User Experience department at NC State University Libraries in 2021. It has been adapted and customized for GBC Library Site by Alice Gonzalez, including theme color modifications and integration into the website.
