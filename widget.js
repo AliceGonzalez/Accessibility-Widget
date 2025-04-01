@@ -43,11 +43,17 @@ var ra_widget = {
 	toggle_widget : function(e){
 		// add event listener to widget button (toggle on|off)
 		document.querySelector("#widget-toggle-button").addEventListener("click", function(e){
-			widget_element = document.getElementById('readability-widget');
+			const widget_element = document.getElementById('readability-widget');
+			const toggle_button = document.querySelector("#widget-toggle-button");
+
 			if(widget_element.classList.contains('closed')){
 				ra_widget.reveal_widget();
+				toggle_button.classList.remove('closed');
+				toggle_button.setAttribute('aria-label', 'Close readability menu');
 			}else{
 				ra_widget.close_widget();
+				toggle_button.classList.add('closed');
+				toggle_button.setAttribute('aria-label', 'Open readability menu');
 			}
 		});
 	},
@@ -413,11 +419,17 @@ var ra_widget = {
 	toggle_widget : function(e){
 		// add event listener to widget button (toggle on|off)
 		document.querySelector("#widget-toggle-button").addEventListener("click", function(e){
-			widget_element = document.getElementById('readability-widget');
+			const widget_element = document.getElementById('readability-widget');
+			const toggle_button = document.querySelector("#widget-toggle-button");
+
 			if(widget_element.classList.contains('closed')){
 				ra_widget.reveal_widget();
+				toggle_button.classList.remove('closed');
+				toggle_button.setAttribute('aria-label', 'Close readability menu');
 			}else{
 				ra_widget.close_widget();
+				toggle_button.classList.add('closed');
+				toggle_button.setAttribute('aria-label', 'Open readability menu');
 			}
 		});
 	},
