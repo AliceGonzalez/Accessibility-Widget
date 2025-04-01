@@ -127,8 +127,8 @@ body.readability-highlight-links-on button:hover {
   border: 0px;
   color: #FFF;
   font-family: "RobotoBold", Arial, Helvetica Neue, Helvetica, sans-serif;
-  font-size: 1.25rem;
-  line-height: 1.25;
+  font-size: 2rem;
+  line-height: 1.00;
   padding: 10px 35px 10px 10px;
   position: relative;
 }
@@ -154,7 +154,7 @@ body.readability-highlight-links-on button:hover {
   color: #004A78;
   font-family: "RobotoLight", Arial, Helvetica Neue, Helvetica, sans-serif;
   font-weight: 100;
-  font-size: 0.9rem;
+  font-size: 1.50rem;
 }
 #readability-widget #widget-content #hide-widget-button:hover {
   text-decoration: underline;
@@ -175,7 +175,7 @@ body.readability-highlight-links-on button:hover {
 }
 #readability-widget #widget-content label.readability-switch span.readability-switch-label {
   line-height: 34px;
-  font-size: 1.2rem;
+  font-size: 1.60rem;
 }
 #readability-widget #widget-content label.readability-switch span.switch-toggle-container {
   height: 36px;
@@ -209,7 +209,7 @@ body.readability-highlight-links-on button:hover {
 }
 #readability-widget #widget-content label.readability-switch span.toggle-switch .label-on {
   align-self: center;
-  font-size: 0.75rem;
+  font-size: 1.20rem;
   display: none;
   text-align: center;
   -webkit-align-self: center;
@@ -218,7 +218,7 @@ body.readability-highlight-links-on button:hover {
 #readability-widget #widget-content label.readability-switch span.toggle-switch .label-off {
   align-self: center;
   -webkit-align-self: center;
-  font-size: 0.75rem;
+  font-size: 1.20rem;
   padding-left: 32px;
   padding-right: 4px;
   text-align: center;
