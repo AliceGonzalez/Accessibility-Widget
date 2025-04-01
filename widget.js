@@ -1,29 +1,29 @@
 var ra_widget = {
 	// initialize widget functionality
 	init: function(){
-		// once widget has loaded enable event listener on button
-		ra_widget.toggle_widget();
+			// enable event listener on button
+			ra_widget.toggle_widget();
 
-		// enable event listeners on toggles
-		ra_widget.add_listeners_to_toggles();
+			// enable event listeners on toggles
+			ra_widget.add_listeners_to_toggles();
 
-		// close when clicking outside widget area
-		ra_widget.close_on_click_outside_of_widget();
+			// close when clicking outside widget area
+			ra_widget.close_on_click_outside_of_widget();
 
-		// close when esc key pressed
-		ra_widget.close_on_escape();
+			// close when esc key pressed
+			ra_widget.close_on_escape();
 
-		// hide widget when hide button pressed
-		ra_widget.set_hidden_event_listener();
+			// hide widget when hide button pressed
+			ra_widget.set_hidden_event_listener();
 
-		// check localstorage toggles
-		ra_widget.check_localstorage_toggles();
+			// check localstorage toggles
+			ra_widget.check_localstorage_toggles();
 
-		// check if analytics exists, if so set global var
-		ra_widget.check_for_analytics();
+			// check if analytics exists, if so set global var
+			ra_widget.check_for_analytics();
 
-		// finally show widget to users
-		ra_widget.show_widget_to_users();
+			// finally show widget to users
+			ra_widget.show_widget_to_users();
 	},
 
 	show_widget_to_users : function(){
@@ -43,11 +43,17 @@ var ra_widget = {
 	toggle_widget : function(e){
 		// add event listener to widget button (toggle on|off)
 		document.querySelector("#widget-toggle-button").addEventListener("click", function(e){
-			widget_element = document.getElementById('readability-widget');
+			const widget_element = document.getElementById('readability-widget');
+			const toggle_button = document.querySelector("#widget-toggle-button");
+
 			if(widget_element.classList.contains('closed')){
 				ra_widget.reveal_widget();
+				toggle_button.classList.remove('closed');
+				toggle_button.setAttribute('aria-label', 'Close readability menu');
 			}else{
 				ra_widget.close_widget();
+				toggle_button.classList.add('closed');
+				toggle_button.setAttribute('aria-label', 'Open readability menu');
 			}
 		});
 	},
