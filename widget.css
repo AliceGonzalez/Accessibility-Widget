@@ -110,9 +110,9 @@ body.readability-highlight-links-on button:hover {
   right: -148px;
 }
 #readability-widget.widget-hidden #widget-toggle button {
-  background-color: #e70bb0; /* TESTING Original: #757575 */
+  background-color: #e9a714; /* TESTING Original: #757575 */
   transition: right 0.25s;
-  right: 0px;
+  right: 50px;
 }
 #readability-widget.widget-hidden #widget-toggle button:hover {
   background-color: #004A78;
@@ -283,7 +283,7 @@ body.readability-hide-images div.slick-wrapper {
   right: 0;
   width: 300px;
   background-color: #ffffff00;
-  border: 1px solid #cccccc00;
+  border: 1px solid #ccc;
   border-radius: 8px 8px 0 0;
 }
 
