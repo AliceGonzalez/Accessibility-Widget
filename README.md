@@ -16,7 +16,9 @@ Here’s more about [why we developed this readability widget](https://www.lib.n
 
 ## Screenshots
 
-![A red Readability tag appears in the lower right corner of a phone screen](https://www.lib.ncsu.edu/sites/default/files/2022-09/android%20-%20chrome.png) ![Readability widget menu opened with features, warm background turned on, giving the page a light orange cast](https://www.lib.ncsu.edu/sites/default/files/2022-09/android_-_chrome_-_warm_bg.png)
+![Capture](https://github.com/user-attachments/assets/a67f474b-6552-4e47-ac63-4d4a6ca311ed)
+![Capture1](https://github.com/user-attachments/assets/d36a1eb7-2805-4976-8341-0a678b814f0d)
+![Capture2](https://github.com/user-attachments/assets/d9d108d7-18bd-4318-9f41-d6eef15058eb)
 
 ## How to install
 1. Clone this repository
@@ -33,5 +35,4 @@ The widget will appear at the bottom right of your site. To expand the widget, t
 
 ## Credits
 
-This widget was created by Erik Olson, Meredith Wynn, and Robin Davis of the User Experience department at NC State University Libraries. We began this work in 2021.
-
+This widget was originally created by Erik Olson, Meredith Wynn, and Robin Davis of the User Experience department at NC State University Libraries in 2021. It has been adapted and customized for [Your College Library's Name] by Alice Gonzalez, including theme color modifications and integration into the website.
