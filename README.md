@@ -18,7 +18,6 @@ Here’s more about [why we developed this readability widget](https://www.lib.n
 
 ![Capture](https://github.com/user-attachments/assets/a67f474b-6552-4e47-ac63-4d4a6ca311ed)
 ![Capture1](https://github.com/user-attachments/assets/d36a1eb7-2805-4976-8341-0a678b814f0d)
-![Capture2](https://github.com/user-attachments/assets/d9d108d7-18bd-4318-9f41-d6eef15058eb)
 
 ## How to install
 1. Clone this repository
