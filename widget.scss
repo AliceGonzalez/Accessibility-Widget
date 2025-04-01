@@ -49,28 +49,28 @@ body.readability-hide-images {
 }
 
 body.readability-highlight-links-on {
-    a,button{
-        background: #FAC800 !important;
-        color: black !important;
+    a, button {
+        background: #FAC800 !important; // Highlight background
+        color: black !important;       // Text color
         text-decoration: none !important;
-        
-        *{
+
+        * {
             background: #FAC800 !important;
             color: black !important;
             text-decoration: none !important;
         }
     }
-    a{
+    a {
         border-bottom: 2px solid black !important;
     }
-    button{
+    button {
         border: 2px solid black !important;
     }
-    a:hover{
-        border-bottom: 2px solid rgb(0,0,0,0) !important;
+    a:hover {
+        border-bottom: 2px solid rgba(0, 0, 0, 0) !important;
     }
-    button:hover{
-        border: 2px solid rgb(0,0,0,0) !important;
+    button:hover {
+        border: 2px solid rgba(0, 0, 0, 0) !important;
     }
 }
 
