@@ -43,4 +43,4 @@ Other ways to embbed code: Render HTML via JS file instead of providing HTML cod
 
 ## Credits
 
-This widget was originally created by Erik Olson, Meredith Wynn, and Robin Davis of the User Experience department at NC State University Libraries in 2021. It has been adapted and customized for GBC Library Site by Alice Gonzalez, including theme color modifications and integration into the website.
+This widget was originally created by Erik Olson, Meredith Wynn, and Robin Davis of the User Experience department at NC State University Libraries in 2021. It has been adapted and customized for the GBC Library Site by *Alice Gonzalez*, including theme color modifications, integration into the website, and code adjustments to specifically apply the widget to Springshare's LibGuides, a content management system widely used by academic and public libraries to create research guides, manage library resources, and support students and researchers.
