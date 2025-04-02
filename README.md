@@ -29,8 +29,8 @@ The widget will appear at the bottom right of your site. To expand the widget, t
 -Embebed widget
 
 Final Embedded code sample that will be placed in the Look & Feel > Custom JS/CSS Section:
-<script src="https://<screename>.github.io/Accessibility-Widget/widget.js"></script>
-<link rel="stylesheet" href="https://<screenname>.github.io/Accessibility-Widget/widget.css">
+
+![Embedded](https://github.com/user-attachments/assets/2a92be96-65f5-4515-9495-bc72c7a7f2a4)
 
 **Copy/Paste code in widget.html file as well**
 
