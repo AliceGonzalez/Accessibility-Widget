@@ -14,8 +14,7 @@ This is a readability widget that you can install on your website. It helps bala
 
 ## Screenshots
 
-![Capture](https://github.com/user-attachments/assets/a67f474b-6552-4e47-ac63-4d4a6ca311ed)
-![Capture1](https://github.com/user-attachments/assets/d36a1eb7-2805-4976-8341-0a678b814f0d)
+![Prototypes](https://github.com/user-attachments/assets/470ec383-dc27-4d5d-914f-a839f567d110)
 
 ## How to install
 1. Clone this repository
