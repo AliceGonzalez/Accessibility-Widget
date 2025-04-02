@@ -18,10 +18,11 @@ This is a readability widget that you can install on your website. It helps bala
 
 ## How to install
 1. Clone this repository
-1. Link to the widget.js script just before the closing <body> tag of your application: ``<script src="path/to/your/widget.js"></script>``
-1. Optional: edit the colors in widget.scss to match those of your organization. 
+2. Link to the widget.js script just before the closing <body> tag of your application: ``<script src="path/to/your/widget.js"></script>``
+3. Optional: edit the colors in widget.scss to match those of your organization. 
 
 The widget will appear at the bottom right of your site. To expand the widget, the user clicks on the "Readability" button. 
+## How to install widget on Springshare
 
 ### Requirements: none
 
